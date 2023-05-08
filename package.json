@@ -1,0 +1,23 @@
+{
+    "name": "section-properties",
+    "version": "0.1.0",
+    "license": "none",
+    "description": "Calculate section properties for various shapes using a Go backend and a Next.js frontend",
+    "main": "go/main.go",
+    "scripts": {
+        "start": "concurrently 'cd go && go run main.go' 'cd next && yarn run dev'",
+        "build": "./build_wasm.sh && cd next && yarn run build",
+        "test": "cd next && yarn run test",
+        "lint": "cd next && yarn run lint"
+    },
+    "devDependencies": {
+        "concurrently": "^6.2.2",
+        "eslint": "^7.32.0",
+        "eslint-config-next": "^11.1.0",
+        "eslint-plugin-react": "^7.26.1",
+        "next": "^11.1.0",
+        "react": "^17.0.2",
+        "react-dom": "^17.0.2"
+    },
+    "packageManager": "yarn@3.5.1"
+}
