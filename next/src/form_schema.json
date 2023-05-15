@@ -12,6 +12,11 @@
       "type": "string",
       "description": "Basic shape"
     },
+    "negativeArea": {
+      "title": "Negative Area?",
+      "type": "boolean",
+      "description": "No if shape should be added to area (default); yes if shape is a cutout"
+    },
     "d1": {
       "title": "Dimension 1",
       "type": "number",
@@ -39,6 +44,7 @@
   "dependencies": {},
   "required": [
     "shape",
+    "negativeArea",
     "d1",
     "d2",
     "centroid_X",

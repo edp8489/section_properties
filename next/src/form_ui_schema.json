@@ -4,6 +4,7 @@
   },
   "ui:order": [
     "shape",
+    "negativeArea",
     "d1",
     "d2",
     "centroid_X",
