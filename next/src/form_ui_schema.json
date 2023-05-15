@@ -1,0 +1,12 @@
+{
+  "shape": {
+    "ui:widget": "radio"
+  },
+  "ui:order": [
+    "shape",
+    "d1",
+    "d2",
+    "centroid_X",
+    "centroid_Y"
+  ]
+}

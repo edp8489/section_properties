@@ -9,6 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.0",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.11.16",
+    "@mui/material": "^5.13.0",
+    "@rjsf/core": "^5.7.0",
+    "@rjsf/mui": "^5.7.0",
+    "@rjsf/utils": "^5.7.0",
+    "@rjsf/validator-ajv8": "5.6.2",
     "eslint": "8.40.0",
     "eslint-config-next": "13.4.1",
     "next": "13.4.1",

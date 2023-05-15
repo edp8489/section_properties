@@ -1,0 +1,47 @@
+{
+  "type": "object",
+  "title": "",
+  "description": "",
+  "properties": {
+    "shape": {
+      "enum": [
+        "Circle",
+        "Rectangle"
+      ],
+      "title": "Shape",
+      "type": "string",
+      "description": "Basic shape"
+    },
+    "d1": {
+      "title": "Dimension 1",
+      "type": "number",
+      "description": "Diameter of circle or width of rectangle"
+    },
+    "d2": {
+      "title": "Dimension 2",
+      "type": "number",
+      "description": "Height of rectangle. (Not used for circle)",
+      "default": 0
+    },
+    "centroid_X": {
+      "title": "Centroid X",
+      "type": "number",
+      "description": "Horizontal position of shape centroid",
+      "default": 0
+    },
+    "centroid_Y": {
+      "title": "Centroid Y",
+      "type": "number",
+      "default": 0,
+      "description": "Vertical position of shape centroid"
+    }
+  },
+  "dependencies": {},
+  "required": [
+    "shape",
+    "d1",
+    "d2",
+    "centroid_X",
+    "centroid_Y"
+  ]
+}
