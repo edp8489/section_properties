@@ -3,6 +3,7 @@ import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import Form from '@rjsf/mui';
 import validator from '@rjsf/validator-ajv8';
+import CustomObjectField from "./CustomObjectField"; 
 
 export default function InputsCard(props) {
   // required props:
@@ -15,11 +16,14 @@ export default function InputsCard(props) {
       <br />
       <Form
         schema={fieldsSchema}
-        uiSchema={uiSchema}
+        uiSchema={{...uiSchema,
+          ...{"ui:ObjectFieldTemplate":CustomObjectField}}}
         validator={validator}
         formData={formData}
         onChange={(e) => { setFormData(e.formData) }}
-        onSubmit={() => { submitFunction(formData) }}
+        onSubmit={() => { ()=>{
+          submitFunction(formData)
+          setFormData(null)} }}
         onError={(e) => console.log('errors')}
       />
     </Paper>

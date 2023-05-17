@@ -2,12 +2,17 @@
   "shape": {
     "ui:widget": "radio"
   },
-  "ui:order": [
-    "shape",
-    "negativeArea",
-    "d1",
-    "d2",
-    "centroid_X",
-    "centroid_Y"
+
+  "ui:submitButtonOptions": {
+    "submitText": "Add"
+  },
+  "ui:groups":[
+    {"_":["shape","negativeArea"],
+    "ui:template": "well"},
+    {
+      "Dimensions": ["d1", "d2"],
+      "Position": ["centroid_X","centroid_Y"],
+      "ui:template": "table"
+    }
   ]
 }

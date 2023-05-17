@@ -7,6 +7,7 @@ import { Box, Paper } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import InputsCard from '../Components/InputsCard'
 import SummaryCard from '../Components/SummaryCard';
+import Grid from '@mui/material/Grid';
 
 // analytics TODO
 
@@ -24,10 +25,12 @@ const uiSchema = require('../form_ui_schema.json')
 
 function debugTable(objectArray) {
   const fieldNames = Object.keys(fieldsSchema.properties)
-  let tableHeader = <tr>{fieldNames.map((name) => (<td><b>{name}</b></td>))}</tr>
+  const tableHeader = <tr>{fieldNames.map((name, hIndex) => (<td key={"header"+hIndex}><b>{name}</b></td>))}</tr>
 
-  let tableRows = objectArray.length == 0 ? <tr><td>"No items in array!"</td></tr> :
-    objectArray.map((item) => (<tr>{fieldNames.map((name) => (<td>{item[name]}</td>))}</tr>))
+  let tableRows = objectArray.length == 0 ? <tr key="666"><td colSpan={fieldNames.length}>"No items in array!"</td></tr> :
+    objectArray.map((item,rowIndex) => (
+      <tr key={"row"+rowIndex}>{fieldNames.map((name, colIndex) => (
+        <td key={"col"+colIndex}>{item[name]}</td>))}</tr>))
 
   return (<table><thead>{tableHeader}</thead><tbody>{tableRows}</tbody></table>)
 
@@ -41,14 +44,28 @@ export default function Home(props) {
     setShapeList(shapeList.concat(newShape))
   }
 
+  const placeholderPlot = <svg xmlns="http://www.w3.org/2000/svg" width="640" height="480">
+    <rect x="220" y="65" width="200" height="75" fill="gray" />
+    <rect x="295" y="140" width="50" height="200" fill="gray" />
+    <rect x="220" y="340" width="200" height="75" fill="gray" />
+  </svg>
+
   return (
     <main>
       <SummaryCard />
       <InputsCard sx={{ textAlign: "center" }} fieldsSchema={fieldsSchema} uiSchema={uiSchema} submitFunction={addShape} />
       <Paper elevation={3} sx={{ ...{ marginTop: "10px", marginBottom: "10px", padding: "10px", textAlign: "center" }, ...props.sx }}>
         <Typography variant="overline">Results</Typography><br />
-        <Box>
-          {debugTable(shapeList)}
+        <Box sx={{ textAlign: "center" }}>
+          <Grid>
+            <Grid item xs={3}>
+            {debugTable(shapeList)}
+            </Grid>
+            <Grid item xs={6}>
+              {placeholderPlot}
+            </Grid>
+          </Grid>
+          
         </Box>
       </Paper>
     </main>

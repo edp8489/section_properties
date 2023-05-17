@@ -13,6 +13,7 @@
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.11.16",
     "@mui/material": "^5.13.0",
+    "@mui/styles": "^5.12.3",
     "@rjsf/core": "^5.7.0",
     "@rjsf/mui": "^5.7.0",
     "@rjsf/utils": "^5.7.0",
