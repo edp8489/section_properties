@@ -12,10 +12,17 @@
       "type": "string",
       "description": "Basic shape"
     },
+    "negativeArea": {
+      "title": "Negative Area",
+      "type": "boolean",
+      "default":false,
+      "description": "Check if shape area should be subtracted"
+    },
     "d1": {
       "title": "Dimension 1",
       "type": "number",
-      "description": "Diameter of circle or width of rectangle"
+      "description": "Diameter of circle or width of rectangle",
+      "exclusiveMinimum":0
     },
     "d2": {
       "title": "Dimension 2",
@@ -36,7 +43,8 @@
       "description": "Vertical position of shape centroid"
     }
   },
-  "dependencies": {},
+  "dependencies": {
+  },
   "required": [
     "shape",
     "d1",
