@@ -76,7 +76,7 @@ func TestCentroid(t *testing.T) {
 
 			// Check if the result matches the expected value
 			if roundedResult != roundedExpected {
-				t.Errorf("Test '%s' failed: expected %.6f, got %.6f", test.name, test.expected, result)
+				t.Errorf("Test '%s' failed: expected %v, got %v", test.name, test.expected, result)
 			}
 		})
 	}
