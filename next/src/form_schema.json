@@ -28,7 +28,8 @@
       "title": "Dimension 2",
       "type": "number",
       "description": "Height of rectangle. (Not used for circle)",
-      "default": 0
+      "default": 1,
+      "exclusiveMinimum": 0
     },
     "centroid_X": {
       "title": "Centroid X",

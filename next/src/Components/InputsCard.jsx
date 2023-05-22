@@ -21,9 +21,9 @@ export default function InputsCard(props) {
         validator={validator}
         formData={formData}
         onChange={(e) => { setFormData(e.formData) }}
-        onSubmit={() => { ()=>{
+        onSubmit={(e) => { 
           submitFunction(formData)
-          setFormData(null)} }}
+          setFormData(null)} }
         onError={(e) => console.log('errors')}
       />
     </Paper>

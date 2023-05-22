@@ -23,25 +23,40 @@ import Grid from '@mui/material/Grid';
 const fieldsSchema = require('../form_schema.json')
 const uiSchema = require('../form_ui_schema.json')
 
-function debugTable(objectArray) {
+function DebugTable(objectArray) {
+  const tableStyle = {
+    border: "1px solid black",
+    borderCollapse: "collapse"
+  }
   const fieldNames = Object.keys(fieldsSchema.properties)
-  const tableHeader = <tr>{fieldNames.map((name, hIndex) => (<td key={"header"+hIndex}><b>{name}</b></td>))}</tr>
+  const tableHeader = <tr>{fieldNames.map((name, hIndex) => (
+    <td key={"header" + hIndex} style={tableStyle} >
+      <b>{name}</b>
+    </td>
+  ))}</tr>
 
-  let tableRows = objectArray.length == 0 ? <tr key="666"><td colSpan={fieldNames.length}>"No items in array!"</td></tr> :
+  let tableRows = objectArray === null ? <tr key="666"><td colSpan={fieldNames.length}>No items in array!</td></tr> :
     objectArray.map((item,rowIndex) => (
       <tr key={"row"+rowIndex}>{fieldNames.map((name, colIndex) => (
-        <td key={"col"+colIndex}>{item[name]}</td>))}</tr>))
+        <td key={"col"+colIndex} style={tableStyle}>{`${item[name]}`}</td>))}</tr>))
 
-  return (<table><thead>{tableHeader}</thead><tbody>{tableRows}</tbody></table>)
+  return (
+    <table style={tableStyle}>
+      <thead>{tableHeader}</thead>
+      <tbody>{tableRows}</tbody>
+    </table>
+  )
 
 }
 
 
 export default function Home(props) {
-  const [shapeList, setShapeList] = React.useState([])
+  const [shapeList, setShapeList] = React.useState(null)
 
   function addShape(newShape) {
-    setShapeList(shapeList.concat(newShape))
+    console.log("Item added to array")
+    console.log(newShape)
+    shapeList == null? setShapeList([newShape]) : setShapeList(shapeList.concat(newShape))
   }
 
   const placeholderPlot = <svg xmlns="http://www.w3.org/2000/svg" width="640" height="480">
@@ -58,10 +73,10 @@ export default function Home(props) {
         <Typography variant="overline">Results</Typography><br />
         <Box sx={{ textAlign: "center" }}>
           <Grid>
-            <Grid item xs={3}>
-            {debugTable(shapeList)}
+            <Grid item xs={12} md={6}>
+            {DebugTable(shapeList)}
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={12} md={6}>
               {placeholderPlot}
             </Grid>
           </Grid>

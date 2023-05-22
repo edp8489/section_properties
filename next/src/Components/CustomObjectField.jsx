@@ -41,7 +41,9 @@ const CustomObjectField = ({
         {properties.map((element, index) => (
           <Grid
             item={true}
-            xs={2}
+            xs={6}
+            sm={4}
+            md={3}
             key={index}
             style={{ marginBottom: '10px' }}
           >
