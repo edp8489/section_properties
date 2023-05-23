@@ -6,8 +6,8 @@ import React from 'react';
 import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import { Box, Paper } from "@mui/material";
-import { NavBar, Footer } from '@/Components/NavBar'
-import { light, dark } from "@/Components/styles.js";
+import { NavBar, Footer } from '../Components/NavBar'
+import { light, dark } from "../Components/styles.js";
 
 const inter = Inter({ subsets: ['latin'] })
 

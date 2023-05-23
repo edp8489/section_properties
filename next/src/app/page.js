@@ -24,19 +24,23 @@ import { ShapeArraySVG } from '../Components/SVGGenerator';
 const fieldsSchema = require('../form_schema.json')
 const uiSchema = require('../form_ui_schema.json')
 
+const tableStyle = {
+  border: "1px solid black",
+  borderCollapse: "collapse",
+  padding: "2px 5px"
+}
+
 function DebugTable(objectArray) {
-  const tableStyle = {
-    border: "1px solid black",
-    borderCollapse: "collapse"
-  }
+  
   const fieldNames = Object.keys(fieldsSchema.properties)
-  const tableHeader = <tr>{fieldNames.map((name, hIndex) => (
+  const headerCols = fieldNames.concat("Area","Icg,x", "Icg,y")
+  const tableHeader = <tr>{headerCols.map((name, hIndex) => (
     <td key={"header" + hIndex} style={tableStyle} >
       <b>{name}</b>
     </td>
   ))}</tr>
 
-  let tableRows = objectArray === null ? <tr key="666"><td colSpan={fieldNames.length}>No items in array!</td></tr> :
+  let tableRows = objectArray === null ? <tr key="666"><td colSpan={headerCols.length}>No items in array!</td></tr> :
     objectArray.map((item,rowIndex) => (
       <tr key={"row"+rowIndex}>{fieldNames.map((name, colIndex) => (
         <td key={"col"+colIndex} style={tableStyle}>{`${item[name]}`}</td>))}</tr>))
@@ -78,9 +82,13 @@ export default function Home(props) {
             {DebugTable(shapeList)}
             </Grid>
             <Grid item xs={12} md={6}>
-              {shapeList != null?ShapeArraySVG(shapeList):null}
-            </Grid>
-          </Grid>
+              <table style={tableStyle} >
+                <thead><tr><th>Centroid X</th><th>Centroid Y</th><th>Area</th><th>Icg,x</th><th>Icg,y</th><th>Jcg,z</th></tr></thead>
+              <tbody><tr><td colSpan="6">Not implemented yet</td></tr></tbody>
+              </table>
+            </Grid> 
+          </Grid><br />
+            {shapeList != null?ShapeArraySVG(shapeList):null}
           
         </Box>
       </Paper>
