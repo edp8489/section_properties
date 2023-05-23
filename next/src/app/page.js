@@ -8,6 +8,7 @@ import Typography from "@mui/material/Typography";
 import InputsCard from '../Components/InputsCard'
 import SummaryCard from '../Components/SummaryCard';
 import Grid from '@mui/material/Grid';
+import { ShapeArraySVG } from '../Components/SVGGenerator';
 
 // analytics TODO
 
@@ -77,7 +78,7 @@ export default function Home(props) {
             {DebugTable(shapeList)}
             </Grid>
             <Grid item xs={12} md={6}>
-              {placeholderPlot}
+              {shapeList != null?ShapeArraySVG(shapeList):null}
             </Grid>
           </Grid>
           
